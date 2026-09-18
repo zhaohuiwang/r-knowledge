@@ -31,6 +31,10 @@ git push -u origin main
 
 git remote add origin git@github-personal:zhaohuiwang/r-knowledge.git
 
+# Add the first upstream source repo
+git subtree add --prefix=sources/wobbrock/Rstats https://github.com/wobbrock/Rstats.git main --squash
+git push origin main    # push it before adding 
+
 
 
 ```
