@@ -9,7 +9,7 @@ mkdir -p notes
 touch  notes/setup_script.md
 
 # Source git repos - original/upstream code
-mkdir -p sources/wobbrock sources/jbpost2
+mkdir -p sources/wobbrock sources/<gitrepo-of-interest>
 
 # My customized code
 mkdir -p my-code
@@ -27,9 +27,9 @@ git commit -m "Create personal R knowledge repository"
 
 git config --global user.email "ezhwang@gmail.com"
 git config --global user.name "zhaohuiwang"
-git push -u origin main
 
 git remote add origin git@github-personal:zhaohuiwang/r-knowledge.git
+git push -u origin main
 
 # Add the first upstream source repo
 git subtree add --prefix=sources/wobbrock/Rstats https://github.com/wobbrock/Rstats.git main --squash
