@@ -1,0 +1,77 @@
+---
+title: "SLG - Introduction to ABC Demos"
+author: Isaac Michaud
+output:
+  pdf_document: default
+  html_notebook: default
+---
+
+# Figure 1 #
+
+Poisson likelihood with uniform prior
+
+```{r}
+#figure 1 
+n = 1000
+x = seq(0,100,length=n)
+y_unif = rep(0.01,n)
+y_gamma = dgamma(x,85,3)
+par(cex=1.25)
+plot(x,y_gamma,type='l',lwd=4,lty=2,xlab='car rate',ylab='density')
+points(x,y_unif,type='l',lwd=4)
+legend("topright",c("Posterior","Prior"),lwd=c(3,3),lty=c(2,1))
+```
+
+# Figure 2 #
+
+```{r}
+#conjugate prior, exact calculation
+n       <- 2
+x       <- c(3,4)
+x_bar   <- mean(x)
+tau            <- 10 
+post_mean      <- ((tau^2)/((1/n) + tau^2))*x_bar
+post_variance  <- ((tau^2)/n)/((1/n) + tau^2)
+print(c(post_mean,post_variance))
+```
+
+```{r}
+set.seed(1234)
+N           <- 100000
+prior_mu    <- rnorm(N,0,sqrt(100))
+euclid_dist <- sapply(prior_mu,function(mu){sqrt(sum((rnorm(2,mu,1) - c(3,4))^2))})
+par(1.25)
+hist(euclid_dist,main="Unfiltered Eucliedian Distances",xlab='distance')
+indices <- sort(euclid_dist, index.return = TRUE)$ix
+best_indices <- indices[1:floor(N*0.01)]
+par(cex=1.25,lwd=3)
+abc_post = density(prior_mu[best_indices])
+x = seq(1,6,0.01)
+y = dnorm(x,post_mean,sqrt(post_variance))
+plot(x,y,type='l',xlab=expression(mu),ylab='density')
+points(abc_post,type='l',lty=2)
+legend("topright",c("Analytic","ABC"),lwd=c(3,3),lty=c(1,2))
+```
+
+Using a sufficient statistic!
+
+```{r}
+N = 100000
+prior_mu    <- rnorm(N,0,10)
+abc_sim <- sapply(prior_mu,function(mu){x=rnorm(1,mu,1/sqrt(2));c(x,abs(x - 3.5))})
+sim_suff <- abc_sim[1,]
+euclid_dist <- abc_sim[2,]
+#hist(euclid_dist)
+indices <- sort(euclid_dist, index.return = TRUE)$ix
+best_indices <- indices[1:floor(N*0.01)]
+best_mu = prior_mu[best_indices]
+par(cex=1.25,lwd=2.5)
+x = seq(1,6,0.01)
+y = dnorm(x,post_mean,sqrt(post_variance))
+plot(x,y,type='l',xlab=expression(mu),ylab='density')
+points(abc_post,type='l',lty=2)
+abc_post = density(prior_mu[best_indices])
+points(abc_post,type='l',lty=3)
+legend("topright",c("Analytic","ABC Basic","ABC Suffic."),lwd=c(3,3,3),lty=c(1,2,3))
+abc_accpeted = sim_suff[best_indices] - 3.5
+```

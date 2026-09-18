@@ -1,0 +1,16 @@
+---
+output: 
+    github_document:
+        includes: 
+            in_header: ../render/header.html
+            before_body: ../render/menu.html
+---
+
+
+## <a href = "https://jbpost2.github.io/R4Reproducibility/" target="_blank">R4Reproducibility</a>
+
+At the <a href = "https://testscience.org/dataworks-sessions-archive/?session=Short%20Course" target = "_blank">2022 Dataworks</a> conference I gave a workshop called `R4Reproducibility`.
+
+The goal of the workshop was to teach common data manipulation and summary measures through the use of the `tidyverse` while emphasizing the creation of reproducibile workflows through `R Markdown`. 
+
+<a href = "https://jbpost2.github.io/R4Reproducibility/" target = "_blank">Here is the workshop site.</a>

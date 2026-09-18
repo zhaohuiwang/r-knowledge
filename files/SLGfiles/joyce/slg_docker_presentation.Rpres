@@ -1,0 +1,295 @@
+<style>
+.selector.noshadow {
+	-webkit-box-shadow: none;
+	-moz-box-shadow: none;
+	box-shadow: none;
+	}
+	
+img  {
+    box-shadow: none !important;
+}
+
+.small-code pre code {
+  font-size: 1em;
+}
+</style>
+
+"Enough Docker to be Dangerous"
+========================================================
+author: Joyce Cahoon
+date: November 10, 2017
+autosize: true
+
+Install Docker
+========================================================
+<br>
+First things first, install: <https://docs.docker.com/engine/installation/>
+<br> 
+
+Then create a docker hub login: <https://hub.docker.com>
+
+What is Docker? 
+========================================================
+<br>
+<center>
+![](VM.png)
+</center>
+
+Basic Docker Fun
+========================================================
+<br> 
+```{c, eval=FALSE}
+docker run <image>
+
+docker start <name|id>
+
+docker stop <name|id>
+
+docker ps [-a include stopped containers]
+
+docker rm <name|id>
+```
+
+Let's Try It
+========================================================
+<br> 
+```{c, eval=FALSE}
+docker
+
+docker login 
+
+docker run tutum/hello-world
+```
+![](docker_hello.png)
+
+In another terminal, run: 
+```{c, eval=FALSE}
+docker ps
+```
+![](docker_ps.png)
+
+Accessing Your Container
+========================================================
+<br> 
+```{c, eval=FALSE}
+docker run -p 8080:80 tutum/hello-world
+```
+
+<br> 
+Check it out on your browser, go to <http://localhost:8080/>
+
+![](docker_web.png)
+
+Clean Up
+========================================================
+<br> 
+```{c, eval=FALSE}
+docker ps -a 
+
+docker rm <name|id> 
+
+docker ps -a 
+``` 
+
+Let's Get Fancy
+========================================================
+<br> 
+```{c, eval=FALSE}
+docker run -d --name web1 -p 8080:80 tutum/hello-world
+
+docker run -d --name web2 -p 8082:80 tutum/hello-world
+
+docker run -d --name web3 -p 8083:80 tutum/hello-world
+
+docker stop web1 
+
+docker ps -a 
+
+docker start web1 
+``` 
+
+Docker and R
+========================================================
+<br> 
+```{c, eval=FALSE}
+docker run --rm -p 8787:8787 rocker/verse
+```
+<br> 
+Check out <http://localhost:8787/>. You should be able to sign-in with:
+- Username: rstudio
+- Password: rstudio
+
+Now you can use Rstudio in your browser the same way you would on your desktop. 
+
+Enabling Reproducibility
+========================================================
+<br> 
+```{c, eval=FALSE}
+docker run --rm -p 8787:8787 -v ~/r-docker-tutorial:/home/rstudio/r-docker-tutorial rocker/verse
+```
+<br> 
+Use the $\texttt{-v}$ flag to access data on your local hard drive as well as save things there. 
+
+Make sure paths placed to the left of $\texttt{:}$ is a path on your machine. 
+
+Example: Simulations in purrr
+========================================================
+<br> 
+
+Use functions in $\texttt{purrr}$ to perform iterative tasks: 
+> for each ___ do ____ 
+
+<br> 
+There is nothing new here, you might already be addressing this in your code with 
+- copy & paste
+- for loops 
+- $\texttt{apply}$  
+
+Example: Simulation in purrr
+========================================================
+class: small-code
+<br> 
+
+How I used to run simulations... 
+
+```{r, eval = FALSE}
+nreps <- 10000
+n <- 5
+results <- matrix(NA, nrow = nreps, ncol = 2)
+for(i in 1:nreps){
+  one_rep <- rnorm(n = 5, mean = 0, sd = 1)
+  results[i, 1] <- sqrt(mean(one_rep^2))
+  results[i, 2] <- median(abs(one_rep-median(one_rep)))
+}
+```
+
+Example: Simulation in purrr
+========================================================
+class: small-code
+<br> 
+
+How I used to run simulations... 
+
+Let's do this for varying $\texttt{n}$ and $\texttt{sd}$:
+
+```{r, eval = FALSE}
+nreps <- 10000
+combinations <- expand.grid(n = c(5, 10, 15), sd = c(1, 2, 3)) 
+results <- combinations[rep(seq_len(nrow(combinations)), each = nreps),]
+system.time(
+  for(i in 1:dim(results)[1]){
+    one_rep <- rnorm(n = results$n[i], mean = 0, sd = results$sd[i])
+    results$rms[i] <- sqrt(mean(one_rep^2))
+    results$mad[i] <- median(abs(one_rep-median(one_rep)))
+  }
+)
+```
+
+Example: Simulation in purrr
+========================================================
+class: small-code
+<br> 
+
+Maybe this is what we should do...  
+```{r, eval = FALSE}
+nreps <- 10000
+simulator <- function(n, sd){
+  one_rep <- rnorm(n = n, mean = 0, sd = sd)
+  rms <- sqrt(mean(one_rep^2))
+  mad <- median(abs(one_rep-median(one_rep)))
+  return(list(one_rep = one_rep, 
+              rms = rms, 
+              mad = mad))
+}
+combinations <- expand.grid(n = c(5, 10, 15), sd = c(1, 2, 3)) 
+results <- combinations[rep(seq_len(nrow(combinations)), each = nreps),]
+system.time(
+  results <- apply(results, 1, function(x) simulator(x[1], x[2])) 
+)
+# Now you have to unlist everything.... 
+head(results)
+```
+
+Example: Simulation in purrr
+========================================================
+class: small-code
+<br> 
+Life could be so much easier... 
+```{r, eval = FALSE}
+library(purrr)
+library(dplyr)
+library(reshape)
+library(ggplot2)
+
+simulator <- function(n, sd){ rnorm(n = n, mean = 0, sd = sd)}
+combinations <- expand.grid(n = c(5, 10, 15), sd = c(1, 2, 3)) 
+results <- combinations[rep(seq_len(nrow(combinations)), each = nreps),]
+system.time(output <- results %>%
+    mutate(sim = map2(n, sd, simulator), 
+           rms = map_dbl(sim, ~sqrt(mean(.^2))), 
+           mad = map_dbl(sim, ~median(abs(.))))) 
+
+# Let's visualize the results ---------------------------------------------
+output_melted <- melt(select(output, -sim), id.vars=c("n", "sd"))
+ggplot(output_melted, aes(x = n, y = value, col = variable)) + 
+  geom_boxplot() +
+  facet_wrap(~sd)
+ggsave("picture.pdf")
+
+```
+
+
+Saving Your Current Instance
+========================================================
+<br> 
+```{c, eval=FALSE}
+docker ps
+
+docker commit -m "[INSERT COMMENT]" [CONTAINER ID] [IMAGE NAME]
+
+docker images
+```
+
+Getting Image Up To Docker Hub 
+========================================================
+<br> 
+```{c, eval=FALSE}
+docker login --username=yourhubusername --email=youremail@ncsu.edu
+
+docker images
+```
+
+<br> 
+If all your files and data are where they need to be, then: 
+```{c, eval=FALSE}
+docker tag [IMAGE ID] your_docker_hub_username/[IMAGE NAME]:[ANY TAG]
+
+docker push your_docker_hub_username/[IMAGE NAME]
+```
+
+Run it on another machine
+========================================================
+<br>
+You can find public images here: <https://hub.docker.com/>
+
+```{c, eval=FALSE}
+docker run jyu21/slg_purr_example:v1 
+
+docker ps
+
+docker exec -it [CONTAINER ID] bash 
+
+Rscript [YOUR SCRIPT].R
+``` 
+
+
+========================================================
+
+<center>
+![](meme.jpg) <br>
+ROpenSci's [Launching Docker] (http://ropenscilabs.github.io/r-docker-tutorial/02-Launching-Docker.html) <br>
+Draw.io's [Making Diagrams] (https://www.draw.io/) <br>
+Sean Kross' [Enough Docker To Be Dangerous] (http://seankross.com/2017/09/17/Enough-Docker-to-be-Dangerous.html?utm_content=bufferbdfbf&utm_medium=social&utm_source=twitter.com&utm_campaign=buffer) <br>
+Mine Cetinkaya-Rundel's [Purrr] (http://rpubs.com/minebocek/rladies-rtp-purrr) <br>
+Dr. Post, Kara & Todd for [SLG](http://www4.stat.ncsu.edu/~post/slg)
+</center>

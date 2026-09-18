@@ -1,0 +1,18 @@
+---
+output: 
+    github_document:
+        includes: 
+            in_header: ../render/header.html
+            before_body: ../render/menu.html
+---
+
+## Teaching
+
+Teaching is my passion and is the work that I enjoy the most. Connecting with students and helping them learn difficult material gets me out of bed in the morning!
+
+Below you can find links to pages about my teaching philosophy, my experience with online education, some (hopefully) useful R Shiny apps I use when teaching, and my modern math stat blog.
+
+- [Philosophy & Courses](PhilosophyCourses.html)
+- [Online Education](Online.html)
+- [R Shiny Teaching Apps](ShinyApps.html)
+- [Teaching Mathematical Statistics Blog](MathStat.html)
