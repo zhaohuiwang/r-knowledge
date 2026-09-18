@@ -8,10 +8,10 @@ mkdir -p r-knowledge && cd r-knowledge
 mkdir -p notes
 touch  notes/setup_script.md
 
-# Source git repos - keep them original
+# Source git repos - original/upstream code
 mkdir -p sources/wobbrock sources/jbpost2
 
-# My version of cloned git repos - may contains modifications
+# My customized code
 mkdir -p my-code
 
 # Working project scripts
@@ -33,7 +33,13 @@ git remote add origin git@github-personal:zhaohuiwang/r-knowledge.git
 
 # Add the first upstream source repo
 git subtree add --prefix=sources/wobbrock/Rstats https://github.com/wobbrock/Rstats.git main --squash
-git push origin main    # push it before adding 
+git push origin main    # push it before adding the next.
+
+git subtree add --prefix=sources/jbpost2/website https://github.com/jbpost2/jbpost2.github.io.git main --squash
+git push origin main
+
+
+
 
 
 
