@@ -23,6 +23,14 @@ touch SOURCES.md
 git init
 git branch -M main
 git add .
-git commit -m ""
+git commit -m "Create personal R knowledge repository"
+
+git config --global user.email "ezhwang@gmail.com"
+git config --global user.name "zhaohuiwang"
+git push -u origin main
+
+git remote add origin git@github-personal:zhaohuiwang/r-knowledge.git
+
+
 
 ```
