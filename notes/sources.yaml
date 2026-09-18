@@ -1,0 +1,8 @@
+
+
+sources:
+
+  - name: statistics
+    url: https://github.com/wobbrock/Rstats.git
+    branch: main
+    directory: sources/webbrock/Rstats
