@@ -1,0 +1,9 @@
+---
+output: 
+    github_document:
+        includes: 
+            in_header: ../render/header.html
+            before_body: ../render/menu.html
+---
+
+Stuff 2

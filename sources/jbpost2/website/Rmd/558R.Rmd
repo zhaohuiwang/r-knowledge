@@ -1,0 +1,13 @@
+---
+output: 
+    github_document:
+        includes: 
+            in_header: ../render/header.html
+            before_body: ../render/menu.html
+---
+
+## Data Science for Statisticians
+
+The course ST 558 - Data Science for Statisticians takes a deep dive into R programming and then looks at many topics that are useful for doing data science. 
+
+The course learning materials are <a href = "https://jbpost2.github.io/ST-558-Data-Science-for-Statisticians/" target = "_blank">freely available here</a>.

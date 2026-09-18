@@ -1,0 +1,83 @@
+ShinyPresentation
+========================================================
+author: Justin Post
+date: March 20th, 2015
+
+Introduction
+========================================================
+**R Shiny can make dynamic and interactive web applications.**
+- product of R Studio
+- great online [tutorials](http://shiny.rstudio.com/) and [example applets](http://www.showmeshiny.com/) 
+- Basic Bayes Example
+- Order Stats Example
+
+
+Basics
+========================================================
+**Two files are used**
+- Must create folder called ShinyApps
+- Set as working directory
+- create app folders within.  Each must have
+  + Item ui.R (user interface file) Set up the way the shiny app looks
+  + Item server.R (usual R code wrapped in shiny functions)
+- We'll make a basketball app, so let's set that up
+
+ui.R File
+========================================================
+```
+shinyUI(fluidPage(
+  #in here you design the page layout.
+  #fluidRow will create a row
+  fluidRow(
+    #now you can use a pre-made layout (easiest) 
+    sidebarLayout( 
+      sidebarPanel("left side by default"),
+      mainPanel("put the main shiny stuff here")
+    )
+  )
+)) #Also use titlePanel, or create more rows
+```
+
+
+ui.R File
+========================================================
+```
+shinyUI(fluidPage(
+  #in here you design the page layout.
+  #fluidRow will create a row
+  fluidRow(
+    #alternatively, use column() to specify your own layout
+    column(9, "Stuff here--------------------------------------"),
+    column(3, "more stuff here--------------------------------")
+  ), #columns must add up to 12 in total width
+  fluidRow( #can nest rows in columns
+    column(6,
+      fluidRow(column(6,"even more stuff!--------------------------"),
+              column(6,"yes more stuff------------------"))
+      ),
+    column(6,"last stuff")
+  )
+))
+```
+
+
+server.R File
+========================================================
+```
+shinyServer(function(input, output) {
+  #build R graphics, tables, etc. here
+})
+```
+
+Functions used for Creating Inputs/Outputs
+========================================================
+There are many functions to create different types of [user input](http://shiny.rstudio.com/tutorial/lesson3/)
+
+There are many functions to create different types of [output](http://shiny.rstudio.com/tutorial/lesson4/)
+
+
+
+
+
+
+

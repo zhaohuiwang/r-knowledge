@@ -1,0 +1,22 @@
+---
+output: 
+    github_document:
+        includes: 
+            in_header: ../render/headerTopLevel.html
+            before_body: ../render/menuTopLevel.html
+---
+
+## About Me  
+
+<div style = "float:left;">
+  <img src = "images/headshot.jpg" alt ="headshot" style="padding: 10px;">
+</div>
+
+<div style = "padding: 10px;"> I am currently a Teaching Professor in the Department of Statistics at North Carolina State University.
+</div>
+
+I have been involved in the department on and off since 2007. I was a graduate student from 2007-2012 and came back to the university in 2013 as a Teaching Assistant Professor. NC State has a wonderful statistics department. If you have any questions about our graduate programs, please don't hesitate to reach out to me at (`justin_post@ncsu.edu`)!
+
+Education is my passion and the focus of my career. I really enjoy curriculum development and course creation, but being in the classroom (virtual or in-person) is definitely the best part of my job. I have a number of [interactive applications I use for teaching and a blog](pages/Teaching.html) that I'm writing about teaching statistical theory if you're interested. (I'm also happy to create new apps or modify the ones I have if you have a request!) 
+
+I'm a big proponent of open educational resources and open-source software. I've [developed a number of programming courses for professional development and student/faculty support](pages/OpenEd.html). The materials are all freely available on github if you'd like to use them.

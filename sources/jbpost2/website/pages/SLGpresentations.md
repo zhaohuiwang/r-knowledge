@@ -1,0 +1,175 @@
+
+<head>
+  <link rel="stylesheet" href="../css/styles.css">
+</head>
+
+<ul class = "menu">
+    <li class = "menu"><a class = "menu" href="../index.html">Home</a></li>
+    <li class="menu dropdown">
+        <a href="Teaching.html" class="dropbtn">Teaching</a>
+        <div class="dropdown-content">
+            <a href="PhilosophyCourses.html">Philosophy & Courses</a>
+            <a href="Online.html">Online Education</a>
+            <a href="ShinyApps.html">R Shiny Teaching Apps</a>
+            <a href="MathStat.html">Teaching Mathematical Statistics Blog</a>
+        </div>
+     </li>
+    
+    <li class="menu dropdown">
+        <a href="OpenEd.html" class="dropbtn">Open Ed</a>
+        <div class="dropdown-content">
+            <a href="SAS.html">Basics of SAS Course</a>
+            <a href="R.html">Basics of R Course</a>
+            <a href="Python.html">Big Data (with python)</a>
+            <a href="558R.html">Data Science for Statisticians</a>
+            <a href="TeachingWithR.html">Teaching with R</a>
+            <a href="R4Reproducibility.html">R4Reproducibility</a>
+            <a href="DataMattersCourses.html">Basics of R for Data Science and Statistics</a>
+            <a href="DataMattersCourses.html">Improving R Programs</a>
+            <a href="DataMattersCourses.html">R for Automating Workflow and Sharing Work</a>
+        </div>
+     </li>
+    <li class = "menu dropdown">
+      <a class = "dropbtn" href="OtherActivities.html">Other Activities</a>
+        <div class="dropdown-content">
+            <a href="OutreachDiversity.html">Outreach & Diversity</a>
+            <a href="UndergradResearch.html">Undergraduate Research</a>
+            <a href="StatisticalLearningGroup.html">Statistical Learning Group</a>
+            <a href="SportsStats">Sports Statistics</a>
+            <a href="ArticlesWorkshops">Articles, Workshops, Quantitative Literacy, & More</a>
+        </div>
+    </li>
+    <li class = "menu" style="float:right"><a class = "menu" href="CV.html">CV</a></li>
+</ul>
+
+<br style = "display: block; content: ''; margin-top: 10; ">
+
+
+## SLG Presentations
+
+Below I have some links to past presentations given by members of the
+group along with corresponding files (if available). The quality of the
+recordings is pretty low (this was before I really got into recording
+software) so please forgive that.
+
+### Fall 2014
+
+<a href= "https://github.com/nsgrantham/slg-ncsu-2014-fall">Find the
+presentation files and links to recordings (if available) here.</a> The
+presentations were:
+
+- Neal Grantham: Intro to the Statistical Learning Group
+- Justin Post: Intro to Statistical Learning
+- Brian Gaines: Overview of Regularization
+- Josh Day: Comparison of Regularization Parameters
+- William Burton: Comparison of Regularization Parameters II
+- Neal Grantham: Introduction to Classification
+- Suchit Mehrotra: Bayesian Classification
+- Munir Winkel: Trees
+- Jami Jackson: Support Vector Machines
+- Brian Naughton: Support Vector Machines for Ranking Models
+- Huimin Peng: Support Vector Machines and Flexible Discriminant
+  Analysis
+
+### Spring 2015
+
+<a href= "https://github.com/nsgrantham/slg-ncsu-2015-spring">Find the
+presentation files and links to recordings (if available) for the first
+three talks here.</a> The rest are linked on this repo in the list
+below. The presentations were:
+
+- Alyson Wilson: Data Science Ideas
+- Marschall Furman: Web Scraping in `R`
+- Neal Grantham: Building a website with `jekyll`
+- Chris Krut: Gaussian Processes in Machine Learning
+- Justin Post: `Shiny` in `RStudio`
+  ([files](https://github.com/jbpost2/jbpost2.github.io/tree/main/files/SLGfiles/justinShiny),
+  [videos](https://www.youtube.com/watch?v=ohIOWfj_O-I&list=PLZ8YyTHkWK9y33rnFOChUHJf_k6dSNaBl))
+- Brad Turnbull: Text Mining
+  ([files](../files/SLGfiles/brad/Turnbull_TextAnalytics.pdf),
+  [videos](https://www.youtube.com/watch?v=uY-L2PV2hWI&list=PLZ8YyTHkWK9xzrDnepBCd0LgeYEW33s84))
+- Adam Suarez: `R` Tips & Tricks
+  ([files](https://github.com/jbpost2/jbpost2.github.io/tree/main/files/SLGfiles/adam/),
+  [videos](https://www.youtube.com/watch?v=ErObi5v9hCs&list=PLZ8YyTHkWK9zkCiHur9DY6FMxH2jXhi3E))
+- Suchit Mehrotra: Bayesian Methods for Missing Data
+  ([files](https://github.com/jbpost2/jbpost2.github.io/tree/main/files/SLGfiles/suchit),
+  [videos](https://www.youtube.com/watch?v=0XcrWoFZ1rI&list=PLZ8YyTHkWK9yyYnjT1fyaB-pwZw9tpBiH))
+
+### Fall 2015
+
+- Neal Grantham: The Hitchhiker’s Guide to Deep Learning
+  ([files](https://github.com/jbpost2/jbpost2.github.io/tree/main/files/SLGfiles/neal/deeplearning/hitchhikers-guide),
+  [videos](https://www.youtube.com/watch?v=ITW1XlGLK1A&list=PLZ8YyTHkWK9yHXllnqk9UuiRzx22HQkDz))
+- Dendi Suhubdy: Deep Learning for Images
+  ([files](../files/SLGfiles/dendi/DeepLearningForImages.pptx),
+  [videos](https://www.youtube.com/watch?v=3lAiR-dmcps&list=PLZ8YyTHkWK9wKWsE5hatfnxQV029bBF7E))
+- Alison Motsinger-Reif: Grammatical Evolution of Neural Networks for
+  Genetic Epidemiology
+  ([files](../files/SLGfiles/alison/NeuralNetworkTalk.ppt))
+- Ajay Kumar: Ensemble Methods
+  ([videos](https://www.youtube.com/watch?v=Mv-mueoeKxI&list=PLZ8YyTHkWK9zX-iqyfX8ITK_qva_HAaL_))
+
+### Spring 2016
+
+- Eric Chi: Overview of Variable Splitting Methods: ADMM and AMA
+  ([files](../files/SLGfiles/eric/Variable_Splitting_NCSU_SLG_01_15_2016.pdf))
+- Marschall Furman: Using Google Maps in R
+  ([videos](https://www.youtube.com/watch?v=4sDb47XtcZ4&list=PLZ8YyTHkWK9w9q78JsGptTFtvK14wyPx0))
+- Min Chi: Machine Learning and Data Mining with Applications to
+  Educational Software
+
+### Fall 2016
+
+- David Dickey: Introduction to Machine Learning
+  ([files](https://www4.stat.ncsu.edu/~dickey/),
+  [videos](https://www.youtube.com/watch?v=HwVWkhMEY5g&list=PLZ8YyTHkWK9ybDWMDnOkaCuEbOXIugPJS))
+- Justin Post: Analysis of a Dataset and More with Trees
+  ([files](https://github.com/jbpost2/jbpost2.github.io/tree/main/files/SLGfiles/justinTrees),
+  [videos](https://www.youtube.com/watch?v=WyExDt9XSfo&list=PLZ8YyTHkWK9w7tGhRlKuh0iE8ea7z1LD_))
+- Todd Wilson: Support Vector Machines
+  ([files](https://github.com/jbpost2/jbpost2.github.io/tree/main/files/SLGfiles/todd/SVM),
+  [videos](https://www.youtube.com/watch?v=eiLfl-_AVus&list=PLZ8YyTHkWK9wbwJHfyyYRvHzZBWl_iKcC))
+- Josh Day: Introduction to Julia
+  ([files](../files/SLGfiles/josh/SLG-09_26_14-V2.html),
+  [videos](https://www.youtube.com/watch?v=EwcTNzpQ6Sc&list=PLZ8YyTHkWK9zcUxOrwKcBIEZ4pAuXEy0O))
+- Neal Grantham: Bayesian Inference Using Julia
+- William Bauer: Philosophy of Information
+- Isaac Michaud: Bayesian Optimization
+  ([files](../files/SLGfiles/isaac/bayesianoptimization.pdf))
+- Todd Wilson: `apply()` Yourself
+  ([files](https://github.com/jbpost2/jbpost2.github.io/tree/main/files/SLGfiles/apply),
+  [videos](https://www.youtube.com/watch?v=iZq5U3BzBVc&list=PLZ8YyTHkWK9xxkzaQmgOGgMC3kpf-ansS))
+
+### Spring 2017
+
+- Jessica Miller: Introduction to Hadoop
+  ([files](../files/SLGfiles/jess/Hadoop.pdf),
+  [videos](https://www.youtube.com/watch?v=UdluRvNywuc))
+- Isaac Michaud: Parallel Computing in R
+  ([files](https://github.com/jbpost2/jbpost2.github.io/tree/main/files/SLGfiles/parallel))
+- Kara Martinez: Is it Numbers? ([files](../files/SLGfiles/kara),
+  [videos](https://www.youtube.com/watch?v=I46w5J9hiYU&list=PLZ8YyTHkWK9xHFwd4yiV3MJRbHcYLIee1))
+- Jami Jackson Mulgrave: Gaussian Graphical Models
+  ([files](https://github.com/jbpost2/jbpost2.github.io/tree/main/files/SLGfiles/jami/GMM),
+  [videos](https://www.youtube.com/watch?v=5pDAfvDexoY&list=PLZ8YyTHkWK9xF1nl8G7CqsvyetNWfMKA-))
+- Amanda Muyskens: Introduction to Spectral Methods
+  ([files](../files/SLGfiles/amanda/IntroToSpectralDomain.pptx))
+- Marschall Furman: Introduction to Computer Vision
+  ([files](../files/SLGfiles/marschall/slg_cv_pres.html),
+  [videos](https://www.youtube.com/watch?v=RY3s46UI4ls&list=PLZ8YyTHkWK9xufvITRPZ7igPRCR5Il4Qf))
+
+### Fall 2017
+
+- Todd Wilson: Machine Learning in the News, or, Why is Statistical
+  Learning Important? ([files](../files/SLGfiles/todd/SLGIntro.pdf),
+  [videos](https://www.youtube.com/watch?v=5TpHbbicj8s))
+- Justin Post: Introduction to R Shiny
+  ([files](https://github.com/jbpost2/jbpost2.github.io/tree/main/files/SLGfiles/justinShiny2))
+- Isaac Michaud: Approximate Bayes Computation
+  ([files](https://github.com/jbpost2/jbpost2.github.io/tree/main/files/SLGfiles/isaac/ApproxBayesComp),
+  [videos](https://www.youtube.com/watch?v=JIYY22zAJok))
+- Pat Samranvedhya: Multivariate Mediation
+  ([files](https://prezi.com/p/imrlwu7yuvaz/),
+  [videos](https://www.youtube.com/watch?v=bKHW6bINWz4))
+- Joyce Cahoon: The `purr` Package and Docker Containers
+  ([files](https://github.com/jbpost2/jbpost2.github.io/tree/main/files/SLGfiles/joyce))

@@ -1,0 +1,30 @@
+---
+output: 
+    github_document:
+        includes: 
+            in_header: ../render/header.html
+            before_body: ../render/menu.html
+---
+
+## Basics of SAS  
+
+As part of my efforts to prepare our Online Master of Statistics and Applied Statistics and Data Management Certificate students, I developed this short course on learning to use the SAS software.  
+
+The course was a free, open, non-credit course and is meant to provide training to our current graduate students on the basics of SAS so that learning how to use SAS doesn’t hinder their learning in the courses that use SAS in our programs.
+
+## Course Goals
+
+This course is designed to demonstrate the basic use of SAS for reading, manipulating, and plotting data via SAS Studio.  How to conduct a basic correlation and regression analysis is also discussed. 
+
+By the end of this course students will be able to: 
+- read and write SAS programs  
+- import well-formatted raw data into SAS  
+- complete common data manipulation tasks in SAS   
+- produce numerical and graphical summaries in SAS
+- conduct a basic correlation and regression analysis
+
+Although the course is no longer available, the video lectures from the course (no access to the code, assignments, etc.) can be found on this <a href = "https://bit.ly/SAS-playlist" target = "_blank">course video at this playlist</a>.  
+
+## Online Statistics Programs @ NC State  
+
+Want to join our online community?  <a href = "https://statistics.sciences.ncsu.edu/graduate/online-programs/" target ="_blank">Check here for more information about our Online Master of Statistics and Online Graduate Certificate programs.</a>
