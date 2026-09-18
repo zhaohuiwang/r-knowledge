@@ -38,9 +38,19 @@ git push origin main    # push it before adding the next.
 git subtree add --prefix=sources/jbpost2/website https://github.com/jbpost2/jbpost2.github.io.git main --squash
 git push origin main
 
+# To pull or update upstream 
+git subtree pull --prefix=sources/wobbrock/Rstats https://github.com/wobbrock/Rstats.git main --squash
 
 
+# To work on the my-code copy
+mkdir -p my-code/statistics
+cp sources/wobbrock/Rstats/R/GLM.R my-code/statistics/
 
+# Now, independent code in my-code dir can be modified. If you want to incoporate the upstream changes or compare the difference if any 
+diff sources/wobbrock/Rstats/R/GLM.R my-code/statistics/GLM.R
+# or 
+git diff --no-index sources/wobbrock/Rstats/R/GLM.R my-code/statistics/GLM.R
+# Then manually incorporate the useful upstream changes into your version.
 
 
 ```
