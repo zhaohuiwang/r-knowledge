@@ -1,4 +1,48 @@
 
+### Getting started with R & RStudio
+
+```Bash
+# Install R and RStudio
+cat /etc/linuxmint/info
+sudo apt update
+sudo apt install r-base r-base-dev
+R –version
+# Use the official Posit RStudio download page to download Rstudio Desktop, and choose "Ubuntu 22 / 24 / 26, Debian 13" option and .deb package.
+cd ~/Downloads
+sudo apt install ./rstudio-2026.09.0-174-amd64.deb
+rstudio –version
+which R			# /usr/bin/R
+rstudio
+> R.version.string		# Run this at a RStudio session to verify which R version is using
+> R.home()
+
+# Upgrade the R while keep the existing version(s)
+cd ~/Downloads
+wget https://cdn.posit.co/r/ubuntu-2404/pkgs/r-4.6.1_1_amd64.deb
+sudo apt install ./r-4.6.1_1_amd64.deb
+/opt/R/4.6.1/bin/R –version
+
+echo 'export PATH="/opt/R/4.6.1/bin:$PATH"' >> ~/.bashrc	# Put the new R into PATH as the default. To check which shell you are using echo $SHELL (both ~/.bashrc and ~/.zshrc might exist)
+source ~/.bashrc		# Reload the shell
+
+# On macOS/Windows, RStudio's Tools → Global Options → General → R version → Change… 
+# On Linux, RStudio normally finds R through the system environment. To switch RStudio from one R version to another through the RSTUDIO_WHICH_R environment variable. Close RStudio completely, then open a terminal and run:
+RSTUDIO_WHICH_R=/usr/bin/R rstudio      # or
+RSTUDIO_WHICH_R=/opt/R/4.6.1/bin/R rstudio
+# Once RStudio opens, to verify the R version run this in the R console 
+R.version.string 
+# RSTUDIO_WHICH_R determines which R executable RStudio starts, and that R executable determines the default library paths that .libPaths() sees.
+
+# If you want a permanent choice, you can create convenient commands and added them into ~/.bashrc 
+alias rstudio43='RSTUDIO_WHICH_R=/usr/bin/R rstudio'
+alias rstudio46='RSTUDIO_WHICH_R=/opt/R/4.6.1/bin/R rstudio'
+# Then reload 
+source ~/.bashrc
+# Now you can choose R version and start RStudio by simple run the following in the terminal
+rstudio43
+rstudio46
+```
+
 
 ```Bash
 # Check your current directory - In the RStudio Console:
@@ -32,6 +76,8 @@ R packages are usually installed outside your individual RStudio project directo
 .libPaths()
 [1] "/home/zhaohuiwang/R/x86_64-pc-linux-gnu-library/4.6"
 [2] "/opt/R/4.6.1/lib/R/library"
+# If you have `renv` installed, `.libPath()` is being controlled by `renv` rather than showing the normal  system-wide R libraries.
+
 ```
 [1] contains your personal R package library. For example, dplyr, ggplots, tidyr etc. This library is share across your RStudio projects. [2] contains packages that came with R itself or were installed into R's system library which blones to R 4.6.1 installation. You can list them with: `installed.packages(lib.loc = .libPaths()[2])[, "Package"]
 `. 
@@ -70,3 +116,6 @@ renv::cache_clean()     # Removes cached package versions that renv considers no
 - [Machine learning in R, by Ott Toomet, University of Washington](https://faculty.washington.edu/otoomet/machinelearning-R/)
 - [Choosing a Statistical Test, by Salvatore S. Mangiafico](https://rcompanion.org/handbook/D_03.html)
 - [RStudio User Guide](https://docs.posit.co/ide/user/ide/guide/environments/r/renv.html)
+- [github RStudio Cheatsheets](https://github.com/rstudio/cheatsheets)
+- [Johns Hopkins Sheridan Libraries and University Museums Research Guides Using R and Python](https://guides.library.jhu.edu/c.php?g=903617&p=6776485)
+-[Utah State University R&RStudio Reference Guide](https://artsci.usu.edu/math-stats/amlc/files/r-studio-reference-sheets-compilation.pdf)
