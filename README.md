@@ -6,6 +6,9 @@
 cat /etc/linuxmint/info
 sudo apt update
 sudo apt install r-base r-base-dev
+# r-base contains the normal R environment you need to run R.r-base-dev contains tools you need to build/install R packages from source.
+apt show r-base
+
 R –version
 # Use the official Posit RStudio download page to download Rstudio Desktop, and choose "Ubuntu 22 / 24 / 26, Debian 13" option and .deb package.
 cd ~/Downloads
@@ -14,7 +17,7 @@ rstudio –version
 which R			# /usr/bin/R
 rstudio
 > R.version.string		# Run this at a RStudio session to verify which R version is using
-> R.home()
+> R.home()              # Return the top level directory path of the R installation that RStudio is currently using
 
 # Upgrade the R while keep the existing version(s)
 cd ~/Downloads
@@ -95,13 +98,15 @@ A dependency management toolkit for R - renv (short for R environment).
 # In Console
 install.packages("renv")
 renv::init()
-renv::snapshot()    # Updates renv.lock file, saving the state of the project library.
-renv::restore()     # Restores the state of R environment to replicate what is in lock file. 
+
 renv::update()      # To get the latest versions of all dependencies
 renv::history()
 renv::revert()      # To roll back to an even older version 
 renv::install()     # 
-renv::status()
+renv::status()      # Health/check report for your current renv project. It returns a library list describing `installed`, `recorded` (into renv.lock) and `used`
+
+renv::snapshot()    # update renv.lock based on your current project library and detected dependencies.
+renv::restore()     # Use renv.lock to reconstruct my project environment.
 
 renv::cache_clean(dry.run = TRUE)
 renv::cache_clean()     # Removes cached package versions that renv considers no longer needed.
